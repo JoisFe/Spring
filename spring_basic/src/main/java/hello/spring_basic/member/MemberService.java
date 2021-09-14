@@ -1,4 +1,4 @@
-package hello.core.member;
+package hello.spring_basic.member;
 
 public interface MemberService { //회원 서비스 구현
 

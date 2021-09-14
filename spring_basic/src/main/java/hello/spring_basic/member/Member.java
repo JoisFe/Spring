@@ -1,4 +1,4 @@
-package hello.core.member;
+package hello.spring_basic.member;
 
 public class Member { //회원 entity에 대한 클래스를 만듬
     private Long id;
