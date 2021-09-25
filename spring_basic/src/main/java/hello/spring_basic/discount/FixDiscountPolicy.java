@@ -9,12 +9,12 @@ public class FixDiscountPolicy implements DiscountPolicy{
 
     @Override
     public int discount(Member member, int price) {
-        if (member.getGrade() == Grade.VIP) {
-            return discountFixAmount;
+        if (member.getGrade() == Grade.VIP) { // 현재 회원이 VIP 등급이면
+            return discountFixAmount; // discountFixAmount 리턴 (즉 1000원 리턴)
         }
 
-        else {
-            return 0;
+        else { // 현재 회원이 VIP가 아니라면
+            return 0; // 0을 리턴해라
         }
     }
 }

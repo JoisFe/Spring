@@ -1,10 +1,10 @@
 package hello.spring_basic.order;
 
 public class Order {
-    private Long memberId;
-    private String itemName;
-    private int itemPrice;
-    private int discountPrice;
+    private Long memberId; // 회원 아이디
+    private String itemName; // 물건 이름
+    private int itemPrice; // 물건 가격
+    private int discountPrice; // 할인 가격
 
     public Order(Long memberId, String itemName, int itemPrice, int discountPrice) {
         this.memberId = memberId;
