@@ -2,6 +2,7 @@ package hello.spring_basic.order;
 
 import hello.spring_basic.discount.DiscountPolicy;
 import hello.spring_basic.discount.FixDiscountPolicy;
+import hello.spring_basic.discount.RateDiscountPolicy;
 import hello.spring_basic.member.Member;
 import hello.spring_basic.member.MemberRepository;
 import hello.spring_basic.member.MemoryMemberRepository;
@@ -10,7 +11,9 @@ public class OrderServiceImpl implements OrderService {
 
     //OrderService는 2개가 필요
     private final MemberRepository memberRepository = new MemoryMemberRepository(); // memberRepository에서 회원 찾아야 하므로
-    private final DiscountPolicy discountPolicy = new FixDiscountPolicy(); // discountPolicy에서 할인 정책되로 적용 해야하므로
+    // private final DiscountPolicy discountPolicy = new FixDiscountPolicy(); // discountPolicy에서 할인 정책되로 적용 해야하므로
+    // private final DiscountPolicy discountPolicy = new RateDiscountPolicy(); // 정액 할인에서 정률 할인으로 바꿈
+    private DiscountPolicy discountPolicy; // 인터페이스에만 의존하도록 변경 (구체 클래스에 의존 하지 않음)
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
