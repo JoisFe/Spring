@@ -10,8 +10,17 @@ import hello.spring_basic.order.OrderServiceImpl;
 
 public class OrderApp {
     public static void main(String[] args) {
-        MemberService memberService = new MemberServiceImpl(); //memberservice 만들고
-        OrderService orderService = new OrderServiceImpl(); //orderservice 만듬
+
+        AppConfig appConfig = new AppConfig();
+
+        MemberService memberService = appConfig.memberService(); // memberService 필요시 appConfig에서 인터페이스 만듬
+        // memberService에는 MemberServiceImpl 객체인데 생성자로 MemoryMemberRepository()를 사용하는 것을 주입 (AppConfig에 있음)
+
+        OrderService orderService = appConfig.orderService(); // orderService 필요시 appConfig에서 인터페이스 만듬
+        // orderService에는 OrderServiceImpl 객체인데 생성자로 MemoryMemberRepository()와 FixDiscountPolicy()를 사용하는 것을 주입 (AppConfig에 있음)
+
+        // 기존에 main 메서드에서 직접 MemberServiceImpl, OrderServiceImpl을 생성함
+        // -> DIP 어기기 떄문거
 
         Long memberId = 1l; //멤버 아이디 생성
         Member member = new Member(memberId, "memberA", Grade.VIP); // Member 객체 생성 (vip 회원 만듬)

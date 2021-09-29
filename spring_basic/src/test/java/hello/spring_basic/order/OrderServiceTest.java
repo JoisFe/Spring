@@ -1,15 +1,27 @@
 package hello.spring_basic.order;
 
+import hello.spring_basic.AppConfig;
 import hello.spring_basic.member.Grade;
 import hello.spring_basic.member.Member;
 import hello.spring_basic.member.MemberService;
 import hello.spring_basic.member.MemberServiceImpl;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class OrderServiceTest {
-    MemberService memberService = new MemberServiceImpl();
-    OrderService orderService = new OrderServiceImpl();
+
+    MemberService memberService;
+    OrderService orderService;
+
+    @BeforeEach
+    public void beforeEach() {
+        AppConfig appConfig = new AppConfig();
+        memberService = appConfig.memberService();
+        orderService = appConfig.orderService();
+    }
+
+    // 기존에 직접 MemberServiceImpl, OrderServiceImpl을 생성하는 것을 지우자 -> DIP 어기지 않기위해
 
     @Test
     void createOrder() {

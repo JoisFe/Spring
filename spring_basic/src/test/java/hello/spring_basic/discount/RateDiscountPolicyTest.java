@@ -38,6 +38,6 @@ class RateDiscountPolicyTest { // VIP 회원이 10% 할인이 잘 되는지 테�
         int discount = discountPolicy.discount(member, 10000); // 가격이 10000원일때 할인되는 가격
 
         //then
-        assertThat(discount).isEqualTo(1000); // 여기서 같지 않아야한다. 회원이 VIP가 아니기 때문에 할인된 가격이 0원이 되야하므로
+        assertThat(discount).isEqualTo(0); // 회원이 VIP가 아니기 떄문에 할인 가격이 0원 되야함.
     }
 }

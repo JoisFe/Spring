@@ -8,7 +8,12 @@ import hello.spring_basic.member.MemberServiceImpl;
 public class MemberApp {
 
     public static void main(String[] args) {
-        MemberService memberService = new MemberServiceImpl(); // MemberService의 객체 memberservice 생성 (MemberServiceImpl 구현 가지는)
+        AppConfig appConfig = new AppConfig();
+        MemberService memberService = appConfig.memberService(); // memberService 필요시 appConfig에서 인터페이스 만듬
+        // memberService에는 MemberServiceImpl 객체인데 MemoryMemberRepository()를 사용하는 것을 주입 (AppConfig에 있음)
+
+        // 기존에 main 메서드에서 MemberServiceImpl을 직접 생성했었다. -> DIP 어김 따라서 제거
+
         Member member = new Member(1L, "memberA", Grade.VIP);// 새로운 Member의 객체 member 생성
         //이름은 memberA, 등급은 VIP
 

@@ -1,11 +1,24 @@
 package hello.spring_basic.member;
 
+import hello.spring_basic.AppConfig;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class MemberServiceTest {
 
-    MemberService memberService = new MemberServiceImpl();
+    MemberService memberService;
+
+    @BeforeEach // 각 테스트 실행전 호출
+    // 테스트 실행 전에 appConfig 만들고 memberService를 할당함
+    // @Test가 두번 있으면 이 부분 두번 호출
+    public void beforeEach() {
+        AppConfig appConfig = new AppConfig();
+        memberService = appConfig.memberService();
+    }
+
+
+    // 기존에 직접 MemberServiceImpl을 생성하는 것을 지우자 -> DIP 어기지 않기위해
 
     @Test
     void join() {
