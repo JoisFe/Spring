@@ -2,6 +2,7 @@ package hello.spring_basic;
 
 import hello.spring_basic.discount.DiscountPolicy;
 import hello.spring_basic.discount.FixDiscountPolicy;
+import hello.spring_basic.discount.RateDiscountPolicy;
 import hello.spring_basic.member.MemberRepository;
 import hello.spring_basic.member.MemberService;
 import hello.spring_basic.member.MemberServiceImpl;
@@ -45,7 +46,10 @@ public class AppConfig {
 
     // discountPolicy 역할
     public DiscountPolicy discountPolicy() {
-        return new FixDiscountPolicy();
+
+        // return new FixDiscountPolicy(); // -> 기존 정액 할인 정책에서 정률 할인정책으로 변경 위해 코드 지움
+
+        return new RateDiscountPolicy(); // 정률 할인 정책으로 변경
     }
 
     // 위 처럼 구현하면 코드를 보기만 해도 메서드 명을 보는 순간 역할이 다 보임
