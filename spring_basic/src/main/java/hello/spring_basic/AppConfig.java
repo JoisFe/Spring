@@ -9,10 +9,14 @@ import hello.spring_basic.member.MemberServiceImpl;
 import hello.spring_basic.member.MemoryMemberRepository;
 import hello.spring_basic.order.OrderService;
 import hello.spring_basic.order.OrderServiceImpl;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 // 애플리케이션에 전체 동장 방식을 구성하는 것을 AppConfig에서 하자
-public class AppConfig {
 
+@Configuration // @Configuration 어노테이션 아래에는 애플리케이션의 설정 정보(구성 정보) 적어줌
+public class AppConfig {
+    @Bean // @Bean 어노테이션 아래에 있는 것은 Spring Container에 등록이 됨
     // memberService 역할
     public MemberService memberService() { //MemberService를 Appconfig에서 만듬
         return new MemberServiceImpl(memberRepository());
@@ -24,12 +28,14 @@ public class AppConfig {
         // 즉 MemberServiceImpl의 생성자의 매개변수로 MemoryMemberRepository의 객체가 들어감
     }
 
+    @Bean
     // memberRepository 역할
    public MemberRepository memberRepository() {
         return new MemoryMemberRepository();
         //
     }
 
+    @Bean
     // orderService 역할
     public OrderService orderService() { // 위와 마찬가지
         return new OrderServiceImpl(memberRepository(), discountPolicy());
@@ -44,6 +50,7 @@ public class AppConfig {
         // OrderServiceImpl의 생성자의 매개변수로 MemoryMemberRepository의 객체와, FixDiscountPolicy 객체 2개 모두 들어감
     }
 
+    @Bean
     // discountPolicy 역할
     public DiscountPolicy discountPolicy() {
 
