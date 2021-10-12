@@ -3,6 +3,7 @@ package hello.spring_basic;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+// 스프링 컨테이너 생성
 @SpringBootApplication
 public class SpringBasicApplication {
 
